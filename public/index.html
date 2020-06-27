@@ -12,6 +12,8 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
 
   <script>
     // Your web app's Firebase configuration
@@ -37,7 +39,7 @@
       await db
         .collection('votes')
         .add({
-          timestamp: firebase.firestore.FildValue.serverTimestamp(),
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           user: auth.id
         })
       alert("投票完了");
