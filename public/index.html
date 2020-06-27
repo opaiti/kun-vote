@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KUN投票</title>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyB36v32c48zwdDRk9071R_EmGFVBELTbOY",
+      authDomain: "kun-vote.firebaseapp.com",
+      databaseURL: "https://kun-vote.firebaseio.com",
+      projectId: "kun-vote",
+      storageBucket: "kun-vote.appspot.com",
+      messagingSenderId: "833885379772",
+      appId: "1:833885379772:web:f332f495fa84ab9ee004b9",
+      measurementId: "G-K0QCZ1D2DP"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script>
+    async function vote() {
+      var db = firebase.firestore();
+      var auth = await firebase.auth().signInAnonymously();
+      await db
+        .collection('votes')
+        .add({
+          timestamp: firebase.firestore.FildValue.serverTimestamp(),
+          user: auth.id
+        })
+      alert("投票完了");
+    }
+  </script>
+</head>
+
+<body>
+  <input type="button" value="投票" onclick="vote();">
+</body>
+
+</html>
