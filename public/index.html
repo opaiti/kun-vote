@@ -40,7 +40,7 @@
         .collection('votes')
         .add({
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          user: auth.id
+          user: auth.user.uid
         })
       alert("投票完了");
     }
@@ -49,6 +49,7 @@
 
 <body>
   <input type="button" value="投票" onclick="vote();">
+  
 </body>
 
 </html>
